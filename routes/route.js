@@ -10,16 +10,16 @@ router.get('/', function (req, res, next) {
     }).then(function (company_list) {
         var comp_list = [];
         company_list.forEach(function (comp) {
-            var temp_arr = {};
-            temp_arr['id'] = comp._id;
-            temp_arr['first_name'] = comp.first_name;
-            temp_arr['last_name'] = comp.last_name;
-            temp_arr['email'] = comp.email;
-            temp_arr['company_name'] = comp.company_name;
-            temp_arr['license_start_date'] = moment(comp.license_start_date).format('MMMM Do YYYY');
-            temp_arr['license_end_date'] = moment(comp.license_end_date).format('MMMM Do YYYY');
-            temp_arr['license_status'] = comp.license_status;
-            comp_list.push(temp_arr);
+            var temp_obj = {};
+            temp_obj['id'] = comp._id;
+            temp_obj['first_name'] = comp.first_name;
+            temp_obj['last_name'] = comp.last_name;
+            temp_obj['email'] = comp.email;
+            temp_obj['company_name'] = comp.company_name;
+            temp_obj['license_start_date'] = moment(comp.license_start_date).format('MMMM Do YYYY');
+            temp_obj['license_end_date'] = moment(comp.license_end_date).format('MMMM Do YYYY');
+            temp_obj['license_status'] = comp.license_status;
+            comp_list.push(temp_obj);
         });
         res.render('pages/company_list', {
             compnay: comp_list
