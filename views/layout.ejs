@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Company</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header id="site-header">
+        <div class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/company" class="navbar-brand">Company List</a>
+                </div>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="/company/register">Register Company</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main id="site-main">
+        <div class="container">
+            <%- body %>
+        </div>
+    </main>
+
+    <footer id="site-footer">
+        By Venkatesh Kumar
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

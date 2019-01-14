@@ -1,0 +1,62 @@
+<div class="jumbotron text-center">
+    <h1>Register Company</h1>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <% if (success.length > 0) { %>
+            <div class="alert alert-success"><%= success %></div>
+        <% } %>
+
+        <% if (errors.length > 0) { %>
+            <div class="alert alert-danger">
+                <% for (error of errors) { %>
+                    <%= error.msg %><br>
+                <% } %>
+            </div>
+        <% } %>
+        
+        <form action="/company/register" method="POST" id="reg_form">
+
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" name="first_name" id="first_name" class="form-control">
+                <p class="help-block"></p>
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="last_name" id="last_name" class="form-control">
+                <p class="help-block"></p>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" id="email" class="form-control">
+                <p class="help-block"></p>
+            </div>
+
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" name="company_name" id="company_name" class="form-control">
+                <p class="help-block"></p>
+            </div>
+
+            <div class="form-group">
+                <label>License Start Date</label>
+                <input type="text" name="license_start_date" id="license_start_date" class="form-control date-picker" readonly>
+                <p class="help-block"></p>
+            </div>
+
+            <div class="form-group">
+                <label>License End Date</label>
+                <input type="text" name="license_end_date" id="license_end_date" class="form-control date_picker date-picker" readonly>
+                <p class="help-block"></p>
+            </div>
+
+        </form>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg" id="submit_btn">Submit</button>
+        </div>
+    </div>
+</div>
