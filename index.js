@@ -5,6 +5,10 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
+const morgan = require('morgan');
+const fs = require('fs');
+const path = require("path");
+const cron = require('node-cron');
 
 const app = express();
 const port = 8000;
@@ -36,6 +40,16 @@ app.use(expressLayouts);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
+    flags: 'a'
+})
+
+// setup the logger
+app.use(morgan('combined', {
+    stream: accessLogStream
+}))
+
 app.use('/company',require('./routes/route'));
 
 app.use(function(err, req, res, next){
@@ -44,6 +58,10 @@ app.use(function(err, req, res, next){
     res.status(422).send({error:err});
 });
 
-app.listen(process.env.port || port, function(){
-    console.log("Listening on port " + port);
+/* cron.schedule('* * * * *', function() {
+    console.log('running a task every minute');
+}); */
+
+app.listen(process.env.PORT || port, function(){
+    console.log("Listening on http://localhost:" + port);
 });
